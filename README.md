@@ -1,16 +1,24 @@
 # WIB — Waktu Indonesia Bergibah
 
-Starter project Next.js untuk platform komunitas hiburan WIB.
+Platform komunitas hiburan WIB berbasis Next.js + Prisma + PostgreSQL.
 
-## Jalankan
-1. Install Node.js 18+.
-2. Buka folder project.
-3. Jalankan `npm install`.
-4. Jalankan `npm run dev`.
-5. Buka `http://localhost:3000`.
+## Fitur backend
+- Registrasi, login, logout dengan session cookie HTTP-only.
+- PostgreSQL melalui Prisma.
+- Pembuatan dan pembacaan gibah melalui API.
+- Komentar tersimpan di database.
+- Notifikasi otomatis saat gibah mendapat komentar.
+- Homepage tidak lagi berisi contoh gibah.
+
+## Setup lokal
+1. `npm install`
+2. Salin `.env.example` menjadi `.env`.
+3. Isi `DATABASE_URL` dengan PostgreSQL kamu.
+4. Jalankan `npx prisma migrate dev --name init`.
+5. Jalankan `npm run dev`.
+
+## Vercel
+Tambahkan environment variable `DATABASE_URL` pada Project Vercel yang terhubung dengan repository ini, lalu deploy ulang. Jangan pernah commit password database atau secret ke GitHub.
 
 ## Catatan
-Versi ini adalah fondasi frontend interaktif dalam satu folder. Komponen feed, reaction, absurd interaction, create gibah, trending, leaderboard, profile, login dan register sudah disiapkan agar mudah dilanjutkan ke PostgreSQL/Prisma/Auth.js.
-
-## Arah backend
-Tambahkan Prisma schema dan PostgreSQL untuk users, posts, comments, reactions, likes, bookmarks, reports, badges, user_badges, notifications, categories, dan tags seperti rancangan database pada brief.
+Schema database berada di `prisma/schema.prisma`. Database remote memerlukan PostgreSQL yang tersedia dan `DATABASE_URL` di environment Vercel.
